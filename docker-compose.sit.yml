@@ -1,0 +1,9 @@
+services:
+  student-service:
+    environment:
+      SPRING_PROFILES_ACTIVE: sit
+      DB_URL: ${SIT_DB_URL:-jdbc:postgresql://sit-postgres:5432/studentdb}
+      DB_USERNAME: ${SIT_DB_USERNAME:-sit_student_user}
+      DB_PASSWORD: ${SIT_DB_PASSWORD:-sit_student_password}
+      KAFKA_BOOTSTRAP_SERVERS: ${SIT_KAFKA_BOOTSTRAP_SERVERS:-sit-kafka:9092}
+      STUDENT_TOPIC: ${SIT_STUDENT_TOPIC:-student-events-sit}

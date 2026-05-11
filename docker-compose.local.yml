@@ -1,0 +1,9 @@
+services:
+  student-service:
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+      DB_URL: jdbc:postgresql://postgres:5432/studentdb
+      DB_USERNAME: student_user
+      DB_PASSWORD: student_password
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      STUDENT_TOPIC: student-events-local

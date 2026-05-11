@@ -1,0 +1,18 @@
+spring:
+  config:
+    activate:
+      on-profile: sit
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://sit-postgres:5432/studentdb}
+    username: ${DB_USERNAME:sit_student_user}
+    password: ${DB_PASSWORD:sit_student_password}
+  jpa:
+    show-sql: false
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:sit-kafka:9092}
+    consumer:
+      group-id: student-crud-sit-group
+
+app:
+  kafka:
+    student-topic: ${STUDENT_TOPIC:student-events-sit}

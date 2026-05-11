@@ -1,0 +1,39 @@
+{
+  "family": "student-crud-service-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/studentCrudTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "student-crud-service",
+      "image": "<ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/student-crud-service:latest",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "environment": [
+        { "name": "SERVER_PORT", "value": "8080" },
+        { "name": "DB_URL", "value": "jdbc:postgresql://<RDS_ENDPOINT>:5432/studentdb" },
+        { "name": "DB_USERNAME", "value": "<DB_USERNAME>" },
+        { "name": "DB_PASSWORD", "value": "<DB_PASSWORD>" },
+        { "name": "KAFKA_BOOTSTRAP_SERVERS", "value": "<MSK_BOOTSTRAP_ENDPOINT>" },
+        { "name": "STUDENT_TOPIC", "value": "student-events" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/student-crud-service",
+          "awslogs-region": "<REGION>",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}

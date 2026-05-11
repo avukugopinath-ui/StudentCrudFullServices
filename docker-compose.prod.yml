@@ -1,0 +1,9 @@
+services:
+  student-service:
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_URL: ${PROD_DB_URL}
+      DB_USERNAME: ${PROD_DB_USERNAME}
+      DB_PASSWORD: ${PROD_DB_PASSWORD}
+      KAFKA_BOOTSTRAP_SERVERS: ${PROD_KAFKA_BOOTSTRAP_SERVERS}
+      STUDENT_TOPIC: ${PROD_STUDENT_TOPIC:-student-events-prod}
