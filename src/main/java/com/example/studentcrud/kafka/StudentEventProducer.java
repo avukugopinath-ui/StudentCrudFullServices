@@ -19,6 +19,6 @@ public class StudentEventProducer {
     }
 
     public void publish(StudentEvent event) {
-       // kafkaTemplate.send(studentTopic, event.getStudentId().toString(), event);
+       kafkaTemplate.send(studentTopic, event.getStudentId().toString(), event);
     }
 }

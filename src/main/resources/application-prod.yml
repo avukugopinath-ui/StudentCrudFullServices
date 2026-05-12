@@ -2,16 +2,27 @@ spring:
   config:
     activate:
       on-profile: prod
+
   datasource:
     url: jdbc:postgresql://postgres.cre2w8wkw34i.ap-southeast-2.rds.amazonaws.com:5432/postgres
     username: postgres
     password: admin123
+
   jpa:
     show-sql: false
+
   kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+    bootstrap-servers: 15.134.234.89:9092
+
     consumer:
-      group-id: student-crud-prod-group
+      group-id: student-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 app:
   kafka:

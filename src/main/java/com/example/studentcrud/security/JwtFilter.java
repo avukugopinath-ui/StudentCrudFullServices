@@ -47,6 +47,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 		studentDetailsService.loadUserByUsername(username);
 
                 if (jwtUtil.validateToken(token)) {
+                	
 
                     UsernamePasswordAuthenticationToken auth =
                             new UsernamePasswordAuthenticationToken(
