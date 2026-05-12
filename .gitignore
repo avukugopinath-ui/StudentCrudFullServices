@@ -30,6 +30,14 @@ hs_err_pid*
 *~
 .DS_Store
 
+# Eclipse
+.settings/
+.classpath
+.project
+.metadata/
+bin/
+*.launch
+
 # Build output
 target/
 build/
